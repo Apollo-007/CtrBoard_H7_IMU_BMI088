@@ -62,6 +62,8 @@ yaw=Get_Yaw();//获得yaw
 
 发送的四个口分别为pitch，roll，yaw，temp。temp为陀螺仪温度可以用于调节温度控制PID
 
+以下代码截自AC6_Code中Algorithm.c，AC6_Code比AC5_Code增了ADC读取h723内部温度并通过USB发送
+
 ```c
 void vofa_demo(void) 
 {
@@ -90,7 +92,12 @@ void vofa_demo(void)
 
 ## 移植注意
 
-mahony代码只有mahonyahrs.c/.h文件，ekf在QuaternionEKF还有kalman_filter 的.c/.h中
+1.KEIL自带的编译器有AC5和AC6两种，AC5的编译器为ARMCC，而AC6的编译器为ARMCLANG。AC6带来的升级有很多，例如编译速度有质的提升。但同时许多AC5的编译指令，也不再适用于AC6。
+原本AC5能正常编译的Freertos用AC6却不能正常编译
+想要在AC6中编译FreeRTOS，则需移植支持ARMCLANG编译指令格式的文件。
+移植支持ARMCLANG编译指令格式的文件的操作步骤详见《AC6编译RTOS的一种方法.PDF》
+
+2.mahony代码只有mahonyahrs.c/.h文件，ekf在QuaternionEKF还有kalman_filter 的.c/.h中
 
 ### EKF部分
 
