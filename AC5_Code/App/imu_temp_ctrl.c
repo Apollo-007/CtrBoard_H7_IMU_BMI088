@@ -18,7 +18,7 @@ float Temperature_PID_Para[3]={286,0,0};
 
 float gyro[3], accel[3], temp;
 float gyro_correct[3]={0};
-float RefTemp = 40;   //Destination
+float RefTemp = 47;   //Destination
 float roll,pitch,yaw=0;
 uint8_t attitude_flag=0;
 uint32_t correct_times=0;
@@ -46,7 +46,7 @@ void IMU_Temperature_Ctrl(){
 //	{
 //		Temperature_PID.Kp=286;
 //	}
-	  PID_calc(&Temperature_PID, temp, RefTemp); //温度pid  //需要调一下pid使得温度在40°左右
+	  PID_calc(&Temperature_PID, temp, RefTemp); //温度pid  //需要调一下pid使得温度在47°左右
 //		if(temp<RefTemp-5)
 //			temp_temperature=600;
 //		else if(temp<RefTemp-1.5f)

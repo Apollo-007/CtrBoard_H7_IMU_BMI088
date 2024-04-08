@@ -22,7 +22,7 @@ float adcx;
 
 float gyro[3], accel[3], temp; //陀螺仪原始值
 float gyro_correct[3]={0};  //0飘初始值
-float RefTemp = 40;   //Destination
+float RefTemp = 47;   //Destination
 float tempcount = 1;	//0飘初始化前温度
 float roll,pitch,yaw=0;//欧拉角
 uint8_t attitude_flag=0;
@@ -42,7 +42,7 @@ void INS_Init(void)
 
 uint32_t temp_temperature=0;
 void IMU_Temperature_Ctrl(){
-	  PID_calc(&Temperature_PID, temp, RefTemp); //温度pid  //需要调一下pid使得温度在40°左右
+	  PID_calc(&Temperature_PID, temp, RefTemp); //温度pid  //需要调一下pid使得温度在47°左右
 		temp_temperature=(uint32_t)Temperature_PID.out; 
 		if(Temperature_PID.out<0)
 		{
